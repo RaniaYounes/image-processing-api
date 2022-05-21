@@ -40,11 +40,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var supertest_1 = __importDefault(require("supertest"));
-var index_1 = __importDefault(require("../routes/index"));
-var resized_1 = __importDefault(require("../utility/resized"));
+var index_1 = __importDefault(require("./../index"));
+var imageResized_1 = __importDefault(require("../routes/imageResize/imageResized"));
 var path_1 = __importDefault(require("path"));
+var resized_1 = __importDefault(require("../utility/resized"));
 // create a request object
 var request = (0, supertest_1.default)(index_1.default);
+describe('Test if imageResizedRout exist ', function () {
+    it('expect imageResizedRout', function () { return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            expect(imageResized_1.default).toBeDefined();
+            return [2 /*return*/];
+        });
+    }); });
+});
 describe('Test endpoint response', function () {
     it('test hello world endpoint', function () { return __awaiter(void 0, void 0, void 0, function () {
         var response;
@@ -64,8 +73,8 @@ it('Invalid Output Path throws error', function () { return __awaiter(void 0, vo
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                resize = path_1.default.join(__dirname, "./../../images/imageR/thump-200-200.jpeg");
-                img = path_1.default.join(__dirname, "./../../images/thump.jpeg");
+                resize = path_1.default.join(__dirname, "../../images/resizd/santamonica-200-400.jpeg");
+                img = path_1.default.join(__dirname, "../../images/santamonica.jpeg");
                 return [4 /*yield*/, (0, resized_1.default)(img, 0, 0, resize)];
             case 1:
                 result = _a.sent();

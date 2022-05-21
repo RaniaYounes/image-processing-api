@@ -29,12 +29,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var morgan_1 = __importDefault(require("morgan"));
 var dotenv = __importStar(require("dotenv"));
+var index_1 = __importDefault(require("./routes/index"));
 dotenv.config();
+var sharp = ('sharp');
 var PORT = process.env.PORT || 3000;
 // create an instance server
 var app = (0, express_1.default)();
 // HTTP request logger middleware
 app.use((0, morgan_1.default)('short'));
+app.use(express_1.default.json());
+app.use('/api', index_1.default);
 // add routing for / path
 app.get('/', function (req, res) {
     res.json({

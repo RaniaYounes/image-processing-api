@@ -52,8 +52,8 @@ imageResizedRout.get('/', function (req, res) { return __awaiter(void 0, void 0,
                 imageName = (req.query.imageName);
                 width = Number(req.query.width);
                 hight = Number(req.query.hight);
-                img = path_1.default.join(__dirname, "./../../images/".concat(imageName, ".jpeg"));
-                resize = path_1.default.join(__dirname, "./../../images/imageR/".concat(imageName, "-").concat(width, "-").concat(hight, ".jpeg"));
+                img = path_1.default.join(__dirname, "../../images/".concat(imageName, ".jpeg"));
+                resize = path_1.default.join(__dirname, "../../images/resized/".concat(imageName, "-").concat(width, "-").concat(hight, ".jpeg"));
                 if (!(req.query.imageName === undefined || !fs_1.default.existsSync(img))) return [3 /*break*/, 1];
                 // console.log('from validation')
                 res.status(400).send('this is invalid image');
