@@ -1,6 +1,6 @@
-import express, { query } from 'express'
+import express from 'express'
 import path from 'path'
-import sharp from 'sharp'
+
 import fs from 'fs'
 import imageResize from '../../utility/resized'
 

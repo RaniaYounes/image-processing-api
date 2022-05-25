@@ -10,7 +10,7 @@
     "build": "npx tsc",
     "start": "npm run build && nodemon build/index.js",
     "prettier": "prettier --config .prettierrc \"src/**/*.{ts,tsx,js,jsx}\" --write",
-    "lint": "eslint src/index.ts"
+    "lint": "eslint --fix . --ext .ts"
   },
   "keywords": [],
   "author": "",

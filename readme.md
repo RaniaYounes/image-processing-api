@@ -21,4 +21,4 @@ This project can be used to display and resize images into our frontend with the
  http://localhost:3000
 
  Url
- http://localhost:3000/api/image?imageName=santamonica&width=300&hight=400
+ http://localhost:3000/api/image?imageName=fjord&width=300&hight=400
