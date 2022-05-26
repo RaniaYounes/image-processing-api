@@ -10,8 +10,8 @@ imageResizedRout.get('/', async (req: express.Request, res: express.Response): P
   const imageName = req.query.imageName
   const width = Number(req.query.width)
   const hight = Number(req.query.hight)
-  const img = path.join(__dirname, `../../images/${imageName}.jpeg`)
-  const resize = path.join(__dirname, `../../images/resized/${imageName}-${width}-${hight}.jpeg`)
+  const img = path.join(__dirname, `../../../images/${imageName}.jpeg`)
+  const resize = path.join(__dirname, `../../../images/resized/${imageName}-${width}-${hight}.jpeg`)
 
   if (req.query.imageName === undefined || !fs.existsSync(img)) {
     // console.log('from validation')
