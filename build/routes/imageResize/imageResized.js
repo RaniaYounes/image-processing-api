@@ -49,31 +49,27 @@ imageResizedRout.get('/', function (req, res) { return __awaiter(void 0, void 0,
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                imageName = (req.query.imageName);
+                imageName = req.query.imageName;
                 width = Number(req.query.width);
                 hight = Number(req.query.hight);
-                img = path_1.default.join(__dirname, "../../images/".concat(imageName, ".jpeg"));
-                resize = path_1.default.join(__dirname, "../../images/resized/".concat(imageName, "-").concat(width, "-").concat(hight, ".jpeg"));
+                img = path_1.default.join(__dirname, "../../../images/".concat(imageName, ".jpeg"));
+                resize = path_1.default.join(__dirname, "../../../images/resized/".concat(imageName, "-").concat(width, "-").concat(hight, ".jpeg"));
                 if (!(req.query.imageName === undefined || !fs_1.default.existsSync(img))) return [3 /*break*/, 1];
-                // console.log('from validation')
                 res.status(400).send('this is invalid image');
                 return [3 /*break*/, 5];
             case 1:
-                if (!(width <= 0 || hight <= 0 || Number.isNaN(width) ||
-                    Number.isNaN(hight))) return [3 /*break*/, 2];
+                if (!(width <= 0 || hight <= 0 || Number.isNaN(width) || Number.isNaN(hight))) return [3 /*break*/, 2];
                 console.log(' validation');
                 res.status(400).send('this is inavalid Dimention ');
                 return [3 /*break*/, 5];
             case 2:
                 if (!fs_1.default.existsSync(resize)) return [3 /*break*/, 3];
-                // console.log('from cash ')
                 res.status(200).sendFile(resize);
                 return [3 /*break*/, 5];
             case 3: return [4 /*yield*/, (0, resized_1.default)(img, width, hight, resize)];
             case 4:
                 resort = _a.sent();
                 if (resort === 'done') {
-                    //  console.log('done')
                     res.status(200).sendFile(resize);
                 }
                 _a.label = 5;

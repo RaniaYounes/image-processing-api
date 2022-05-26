@@ -46,8 +46,7 @@ var imageResize = function (img, width, hight, imageResize) { return __awaiter(v
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, (0, sharp_1.default)(img).resize({ width: width, height: hight })
-                        .toFile(imageResize)];
+                return [4 /*yield*/, (0, sharp_1.default)(img).resize({ width: width, height: hight }).toFile(imageResize)];
             case 1:
                 _a.sent();
                 return [2 /*return*/, 'done'];

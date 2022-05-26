@@ -31,7 +31,6 @@ var morgan_1 = __importDefault(require("morgan"));
 var dotenv = __importStar(require("dotenv"));
 var index_1 = __importDefault(require("./routes/index"));
 dotenv.config();
-var sharp = ('sharp');
 var PORT = process.env.PORT || 3000;
 // create an instance server
 var app = (0, express_1.default)();

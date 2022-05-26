@@ -14,18 +14,19 @@ imageResizedRout.get('/', async (req: express.Request, res: express.Response): P
   const resize = path.join(__dirname, `../../../images/resized/${imageName}-${width}-${hight}.jpeg`)
 
   if (req.query.imageName === undefined || !fs.existsSync(img)) {
-    // console.log('from validation')
+   
     res.status(400).send('this is invalid image')
+    
   } else if (width <= 0 || hight <= 0 || Number.isNaN(width) || Number.isNaN(hight)) {
     console.log(' validation')
     res.status(400).send('this is inavalid Dimention ')
   } else if (fs.existsSync(resize)) {
-    // console.log('from cash ')
+   
     res.status(200).sendFile(resize)
   } else {
     const resort = await imageResize(img, width, hight, resize)
     if (resort === 'done') {
-      //  console.log('done')
+  
       res.status(200).sendFile(resize)
     }
   }
