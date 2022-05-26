@@ -41,11 +41,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var path_1 = __importDefault(require("path"));
-var fs_1 = __importDefault(require("fs"));
+var fs_extra_1 = __importDefault(require("fs-extra"));
+//import fs from 'fs'
 var resized_1 = __importDefault(require("../../utility/resized"));
 var imageResizedRout = express_1.default.Router();
 imageResizedRout.get('/', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var imageName, width, hight, img, resize, resort;
+    var imageName, width, hight, img, resize, imageOutputPath, resort;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -54,7 +55,8 @@ imageResizedRout.get('/', function (req, res) { return __awaiter(void 0, void 0,
                 hight = Number(req.query.hight);
                 img = path_1.default.join(__dirname, "../../../images/".concat(imageName, ".jpeg"));
                 resize = path_1.default.join(__dirname, "../../../images/resized/".concat(imageName, "-").concat(width, "-").concat(hight, ".jpeg"));
-                if (!(req.query.imageName === undefined || !fs_1.default.existsSync(img))) return [3 /*break*/, 1];
+                imageOutputPath = path_1.default.resolve(__dirname, "../../../images");
+                if (!(req.query.imageName === undefined || !fs_extra_1.default.existsSync(img))) return [3 /*break*/, 1];
                 res.status(400).send('this is invalid image');
                 return [3 /*break*/, 5];
             case 1:
@@ -63,7 +65,7 @@ imageResizedRout.get('/', function (req, res) { return __awaiter(void 0, void 0,
                 res.status(400).send('this is inavalid Dimention ');
                 return [3 /*break*/, 5];
             case 2:
-                if (!fs_1.default.existsSync(resize)) return [3 /*break*/, 3];
+                if (!fs_extra_1.default.existsSync(resize)) return [3 /*break*/, 3];
                 res.status(200).sendFile(resize);
                 return [3 /*break*/, 5];
             case 3: return [4 /*yield*/, (0, resized_1.default)(img, width, hight, resize)];
@@ -71,6 +73,9 @@ imageResizedRout.get('/', function (req, res) { return __awaiter(void 0, void 0,
                 resort = _a.sent();
                 if (resort === 'done') {
                     res.status(200).sendFile(resize);
+                }
+                else {
+                    res.status(400).send('can not review image');
                 }
                 _a.label = 5;
             case 5: return [2 /*return*/];

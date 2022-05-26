@@ -1,7 +1,8 @@
 import express from 'express'
 import path from 'path'
+import fs from 'fs-extra'
 
-import fs from 'fs'
+//import fs from 'fs'
 import imageResize from '../../utility/resized'
 
 const imageResizedRout = express.Router()
@@ -12,7 +13,11 @@ imageResizedRout.get('/', async (req: express.Request, res: express.Response): P
   const hight = Number(req.query.hight)
   const img = path.join(__dirname, `../../../images/${imageName}.jpeg`)
   const resize = path.join(__dirname, `../../../images/resized/${imageName}-${width}-${hight}.jpeg`)
-
+  
+  // image directory path
+  
+ const imageOutputPath: string = path.resolve(__dirname, `../../../images`)
+  
   if (req.query.imageName === undefined || !fs.existsSync(img)) {
    
     res.status(400).send('this is invalid image')
@@ -28,7 +33,13 @@ imageResizedRout.get('/', async (req: express.Request, res: express.Response): P
     if (resort === 'done') {
   
       res.status(200).sendFile(resize)
+    } else{
+      res.status(400).send('can not review image')
     }
   }
+  
+
 })
+
+
 export default imageResizedRout

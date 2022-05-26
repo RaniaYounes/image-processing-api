@@ -22,7 +22,7 @@ app.get('/', (req: Request, res: Response) => {
 
 // start express server
 app.listen(PORT, () => {
-  console.log(`Server is starting at prot:${PORT}`)
+  console.log(`Server is starting at port:${PORT}`)
 })
 
 export default app
